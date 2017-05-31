@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react'
 import Header from '../components/Header'
-import {newCat} from '../actions/CatActions';
+import {newCat} from '../actions/actions';
+import catStore from '../stores/CatStore'
 
 class CatAdd extends Component{
   constructor(props){
@@ -17,6 +18,16 @@ class CatAdd extends Component{
       },
       message : ''
     }
+  }
+
+  handleError(){
+    this.setState({
+      message: 'Could not create cat'
+    })
+  }
+
+  componentWillMount(){
+    catStore.on('create cat error', this.handleError.bind(this))
   }
 
   handleSubmit(e){
@@ -41,7 +52,7 @@ class CatAdd extends Component{
         </div>
         <div className="row">
           <div className="col-xs-2 col-xs-offset-5">
-
+            <p>{this.state.message}</p>
             <form onSubmit={this.handleSubmit.bind(this)}>
               <label htmlFor="color">Color</label>
               <input

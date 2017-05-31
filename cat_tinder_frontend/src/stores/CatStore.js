@@ -39,6 +39,20 @@ class CatStore extends EventEmitter{
         this.addCat(action.cat);
         break;
       }
+      case("CREATE_CAT_ERROR"):{
+        // this.updateUser(action.user)
+        // // this.message = "User Logged In"
+        // // this.emit('message')
+        this.emit('create cat error')
+        break
+      }
+      case("FETCH_CAT_ERROR"):{
+        // this.updateUser(action.user)
+        // // this.message = "User Logged In"
+        // // this.emit('message')
+        this.emit('fetch cat error')
+        break
+      }
       default:{}
     }
   }

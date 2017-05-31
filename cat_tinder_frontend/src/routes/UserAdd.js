@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import Header from '../components/Header'
-import {newUser} from '../actions/CatActions';
+import {newUser} from '../actions/actions';
 import userStore from '../stores/UserStore';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 
@@ -21,12 +21,6 @@ class UserAdd extends Component{
       redirect: false
     }
   }
-  // componentWillMount(){
-  //   catStore.on('load', this.handleChange.bind(this))
-  //   this.setState({
-  //     cats: catStore.getCats()
-  //   })
-  // }
 
   componentWillMount(){
     userStore.on('user_created', ()=> {
@@ -34,13 +28,16 @@ class UserAdd extends Component{
         redirect: true
       })
     })
+    userStore.on('create user error', ()=> {
+      this.setState({
+        message: 'Failed to register new user'
+      })
+    })
   }
 
   handleSubmit(e){
     e.preventDefault();
     newUser(this.state)
-
-      //.catch(
   }
 
   handleChange(e){
@@ -66,7 +63,7 @@ class UserAdd extends Component{
 
         <div className="row">
           <div className="col-xs-2 col-xs-offset-5">
-
+            <p>{this.state.message}</p>
             <form onSubmit={this.handleSubmit.bind(this)}>
               <label htmlFor="firstname">First name</label>
               <input

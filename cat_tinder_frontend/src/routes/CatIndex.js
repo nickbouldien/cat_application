@@ -9,14 +9,22 @@ class CatIndex extends Component{
   constructor(props){
     super(props)
     this.state = {
-      cats: []
+      cats: [],
+      message: ''
     }
   }
 
   componentWillMount(){
     catStore.on('load', this.handleChange.bind(this))
+    catStore.on('fetch cat error', this.handleError.bind(this))
     this.setState({
       cats: catStore.getCats()
+    })
+  }
+
+  handleError(){
+    this.setState({
+      message: 'Cats failed to load'
     })
   }
 
@@ -47,10 +55,12 @@ class CatIndex extends Component{
       <div>
         <div className="header">
           <Header textLocation="Add a cat!" linkLocation="/cat-add" text="Cats!"/>
-          <Link to="/user-add">Create User</Link>
+          <Link to="/user-add">Create User</Link><br></br>
+          <Link to="/user-login">Login</Link>
         </div>
         <div className="row">
           <div className="col-xs-12">
+            <p>{this.state.message}</p>
             {catsToShow}
           </div>
         </div>

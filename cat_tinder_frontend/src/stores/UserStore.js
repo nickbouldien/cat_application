@@ -30,10 +30,27 @@ class UserStore extends EventEmitter{
 
   handleAction(action){
     switch(action.type){
-      // case("FETCH_USERS"):{
-      //   this.updateCats(action.users, action.initial)
-      //   break
-      // }
+      case("LOGIN_USER"):{
+        // this.updateUser(action.user)
+        // // this.message = "User Logged In"
+        // // this.emit('message')
+        this.emit('login')
+        break
+      }
+      case("LOGIN_ERROR"):{
+        // this.updateUser(action.user)
+        // // this.message = "User Logged In"
+        // // this.emit('message')
+        this.emit('login error')
+        break
+      }
+      case("CREATE_USER_ERROR"):{
+        // this.updateUser(action.user)
+        // // this.message = "User Logged In"
+        // // this.emit('message')
+        this.emit('create user error')
+        break
+      }
       case("NEW_USER"):{
         this.addUser(action.user);
         break;
