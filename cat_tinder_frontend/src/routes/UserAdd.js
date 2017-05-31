@@ -48,8 +48,9 @@ class UserAdd extends Component{
 
   render(){
     if (this.state.redirect){
-      console.log("in redirect")
-      return <Redirect push to="/user-created" />
+      // console.log("in redirect")
+      this.props.history.push("/user-created")
+      //<Redirect push to="/user-created" />
     }
     return (
       <div>

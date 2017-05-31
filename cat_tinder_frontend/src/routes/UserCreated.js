@@ -7,9 +7,7 @@ import {Link} from 'react-router-dom'
 class UserCreated extends Component{
 
   renderNewUser(){
-    console.log("in render new user", userStore.newUser)
     let attributes = userStore.getNewUser()
-    console.log(attributes)
     return (
       <div>
         <h1>User Created:</h1>
@@ -17,7 +15,7 @@ class UserCreated extends Component{
         <p>Last Name: {attributes.lastname}</p>
         <p>City: {attributes.city}</p>
         <p>State: {attributes.state}</p>
-        <p>Email: {attributes.password}</p>
+        <p>Email: {attributes.email}</p>
         <Link to="/">Continue</Link>
       </div>
     )

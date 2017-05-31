@@ -51,8 +51,8 @@ class LoginUser extends Component {
         <p>{this.state.message}</p>
         <form onSubmit={this.handleSubmit.bind(this)}>
         <div className='formGroup'>
-          <label htmlFor='username'>Username</label>
-          <input type='text' name='username' id='username' value={this.state.user.username} onChange={this.handleChange.bind(this)}></input>
+          <label htmlFor='email'>Email</label>
+          <input type='text' name='email' id='email' value={this.state.user.email} onChange={this.handleChange.bind(this)}></input>
         </div>
         <div className='formGroup'>
           <label htmlFor='password'>Password</label>

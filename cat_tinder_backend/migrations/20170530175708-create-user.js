@@ -23,9 +23,13 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
+      encryptedPassword: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
+      authToken: Sequelize.STRING,
+      authTokenExpiration: Sequelize.DATE,
+      salt: Sequelize.STRING,
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

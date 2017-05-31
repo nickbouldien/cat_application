@@ -49,7 +49,6 @@ export function fetchCats(initial=false){
     })
     .then((body)=>{
       if (success){
-        console.log("success!", body)
         let cats = body.cats
         dispatcher.dispatch({
           type: "FETCH_CATS",
@@ -126,7 +125,6 @@ export function newUser(userInfo){
           type: "NEW_USER",
           user: body.user
         })
-        console.log("success!", body.user)
       }
       else {
         dispatcher.dispatch({
