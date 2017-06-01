@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {loginUser} from '../actions/actions';
 import userStore from '../stores/UserStore';
 

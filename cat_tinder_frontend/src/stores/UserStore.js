@@ -6,6 +6,11 @@ class UserStore extends EventEmitter{
     super();
     this.users = [{}]
     this.newUser = {}
+    this.currentUser
+  }
+
+  getCurrentUser(){
+    return this.currentUser;
   }
 
   getNewUser(){
@@ -30,6 +35,7 @@ class UserStore extends EventEmitter{
   handleAction(action){
     switch(action.type){
       case("LOGIN_USER"):{
+        this.currentUser = action.user.email
         // this.updateUser(action.user)
         // // this.message = "User Logged In"
         // // this.emit('message')

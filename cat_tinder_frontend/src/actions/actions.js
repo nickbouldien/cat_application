@@ -92,6 +92,7 @@ export function newCat(catInfo){
         console.log("success!", body.cat)
       }
       else {
+        console.log('in else clause of new Cat')
         dispatcher.dispatch({
           type: 'CREATE_CAT_ERROR',
           message: 'login failed'
